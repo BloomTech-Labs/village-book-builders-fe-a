@@ -13,15 +13,12 @@ const TimeSlotsListView = props => {
       <ol>
         <li>3:00 pm</li>
         <li>4:00 pm</li>
-        <li>5:00 pm</li>
       </ol>
 
       <h3>Tuesday</h3>
       <ol>
         <li>2:00 pm</li>
         <li>3:00 pm</li>
-        <li>4:00 pm</li>
-        <li>5:00 pm</li>
       </ol>
 
       <h3>Wendsday</h3>
@@ -47,7 +44,6 @@ const TimeSlotsListView = props => {
       <ol>
         <li>1:00 pm</li>
         <li>2:00 pm</li>
-        <li>3:00 pm</li>
       </ol>
     </div>
   );
