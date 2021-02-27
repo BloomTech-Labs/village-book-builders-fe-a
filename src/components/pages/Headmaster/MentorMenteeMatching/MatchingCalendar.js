@@ -81,7 +81,8 @@ const MatchingCalendar = props => {
 
       //It might mean having different variables in each of those switch statements rather than using
       // listData every time, but depends how you set it up I suppose.
-      case 1:
+
+      case 1: // represents hardcoded data point on calendar
         listData = [
           {
             type: 'success',
@@ -126,7 +127,10 @@ const MatchingCalendar = props => {
 
   //standard picker handler
   const handleChange = e => {
-    setCalValue({ ...calValue, [e.target.name]: e.target.value });
+    setCalValue({
+      ...calValue,
+      [e.target.name ? e.target.name : 'noname']: e.target.value,
+    });
   };
 
   const onFinish = calValue => {
@@ -212,13 +216,13 @@ const MatchingCalendar = props => {
         <Form.Item label="Date">
           <Input.Group>
             <Form.Item
-              name="date"
+              name="datep"
               noStyle
               // rules={[{ required: true, message: 'Date is required' }]}
-              handleChange={e => handleChange(e)}
+              handleChange={e => console.log(e)}
             >
               <Space direction="vertical">
-                <DatePicker name={calValue.date} handleChange={handleChange} />
+                <DatePicker name="date-pick" onChange={handleChange} />
               </Space>
             </Form.Item>
           </Input.Group>
