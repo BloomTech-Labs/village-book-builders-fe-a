@@ -18,7 +18,7 @@ const MenteeForm = ({ currentMentee }) => {
     currentMentee,
     moment.utc(currentMentee.dob).format('dddd, MMMM Do of YYYY')
   );
-  console.log(currentMentee);
+
   const [formData, setFormData] = useState('');
   const pathname = useHistory().location.pathname;
   const params = useParams().id;
