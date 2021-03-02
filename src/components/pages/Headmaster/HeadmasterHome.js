@@ -8,7 +8,6 @@ const HeadmasterHome = props => {
   useEffect(() => {
     props.fetchHeadmasterProfile(1); // change this later with login
   }, []);
-  console.log(profile);
 
   return (
     <div>
