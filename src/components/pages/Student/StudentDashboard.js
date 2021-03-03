@@ -9,6 +9,8 @@ import Logout from '../../Logout.js';
 import { Layout, Menu, PageHeader, Button, Avatar } from 'antd';
 import { HomeOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
 
+import StudentMeetTheMentors from './StudentMeetTheMentors';
+
 const StudentDashboard = props => {
   const { profile, fetchMenteeProfile, isLoading } = props;
 
@@ -61,6 +63,10 @@ const StudentDashboard = props => {
                 </Menu.Item>
                 <Menu.Item key="7" icon={<LogoutOutlined />}>
                   <Link to="/logout">Logout</Link>
+                </Menu.Item>
+                // changed this
+                <Menu.Item key="3" icon={<UserOutlined />}>
+                  <Link to="/mentors">Meet Mentors</Link>
                 </Menu.Item>
               </Menu>
               <div>
