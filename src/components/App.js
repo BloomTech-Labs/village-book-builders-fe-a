@@ -12,6 +12,7 @@ import TeacherRegForm from './common/TeacherRegForm';
 import TeacherDashboard from './pages/Teacher/TeacherDashboard';
 import ProgramDashboard from './pages/Program/ProgramDashboard';
 import StudentDashboard from './pages/Student/StudentDashboard';
+import MentorDashboard from './pages/Mentor/MentorDashboard';
 
 const App = ({ role, checkToken }) => {
   return (
@@ -37,6 +38,8 @@ const App = ({ role, checkToken }) => {
               {role === 'program' && <ProgramDashboard />}
               {role === 'admin' && <AdminDashboard />}
               {role === 'mentee' && <StudentDashboard />}
+
+              {role === 'mentor' && <MentorDashboard />}
             </>
           ) : (
             <Redirect to="/login" />
