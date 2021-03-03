@@ -132,6 +132,15 @@ const MatchingCalendar = props => {
   const onFinish = calValue => {
     console.log(calValue);
   };
+  const setMenteeValues = mentee => {
+    let value = mentee.first_name + ' ' + mentee.last_name;
+
+    return (
+      <Option value={value} key={mentee.id}>
+        {value}
+      </Option>
+    );
+  };
 
   return (
     <div>
@@ -174,9 +183,13 @@ const MatchingCalendar = props => {
               rules={[{ required: true, message: 'Mentee is required' }]}
             >
               <Select placeholder="Please select a mentee">
-                <Option value="Mentee Scott">Mentee Scott</Option>
+                {props.mentees.map(mentee => {
+                  return setMenteeValues(mentee);
+                })}
+                {/* <Option value="Mentee Scott">Mentee Scott</Option>
                 <Option value="Mentee Beasly">Mentee Beasly</Option>
-                <Option value="Mentee Martinez">Mentee Martinez</Option>
+                <Option value = {value}>{value}</Option>
+                <Option value="Mentee Martinez">Mentee Martinez</Option> */}
               </Select>
             </Form.Item>
           </Input.Group>

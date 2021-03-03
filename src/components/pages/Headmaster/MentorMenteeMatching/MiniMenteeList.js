@@ -24,11 +24,12 @@ const MiniMenteeList = props => {
                 avatar={<Avatar src={item.mentor_picture} />}
                 title={item.first_name + ' ' + item.last_name}
               />
+
               {/* <List.Item.Meta
                 title={<header>Email Address</header>}
                 description={item.email}
-              /> */}
-              {/* <List.Item.Meta
+              />
+              <List.Item.Meta
                 title={<header>Contact As Early As</header>}
                 description={item.availability.as_early_as}
               />
@@ -43,8 +44,8 @@ const MiniMenteeList = props => {
               <List.Item.Meta
                 title={<header>Time Zone</header>}
                 description={item.availability.time_zone}
-              />
-              <List.Item.Meta
+              /> */}
+              {/* <List.Item.Meta
                 title={<header>DOB</header>}
                 description={Moment(item.dob).format('DD-MM-YYYY')}
               /> */}
