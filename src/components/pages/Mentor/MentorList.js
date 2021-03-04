@@ -11,7 +11,7 @@ const MentorList = props => {
     fetchMentors();
   }, [fetchMentors]);
 
-  // console.log('props', props);
+  console.log('props', props.mentors);
 
   return (
     <div className="menteeContainer">
@@ -43,7 +43,7 @@ const MentorList = props => {
 
 const mapStateToProps = state => {
   return {
-    isloading: state.headmasterReducer.isLoading,
+    isloading: state.mentorReducer.isLoading,
     mentors: state.headmasterReducer.mentors,
   };
 };

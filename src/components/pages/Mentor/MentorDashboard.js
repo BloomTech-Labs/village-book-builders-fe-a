@@ -22,7 +22,7 @@ const MentorDashboard = props => {
   useEffect(() => {
     props.fetchMentors(1); // change this later with login
   }, []);
-  // console.log('Mentors:', profile);
+  console.log('Mentors:', profile);
 
   const { Content, Sider } = Layout;
 

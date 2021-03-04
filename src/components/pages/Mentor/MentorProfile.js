@@ -7,7 +7,6 @@ const MentorProfile = ({ fetchMentors, profile }) => {
     fetchMentors(1); // change this later with login
   }, [fetchMentors]);
 
-  console.log('inside the mentor edit form', profile);
   return (
     <div className="form-container">
       <div>
@@ -22,7 +21,7 @@ const MentorProfile = ({ fetchMentors, profile }) => {
 };
 const mapStateToProps = state => {
   return {
-    profile: state.mentorReducer.mentorProfile,
+    mentors: state.headmasterReducer.mentors,
   };
 };
 export default connect(mapStateToProps, { fetchMentors })(MentorProfile);
