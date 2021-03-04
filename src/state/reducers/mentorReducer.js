@@ -13,11 +13,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  console.log(
-    'mentorReducer.js, action type & payload:',
-    action.type,
-    action.payload
-  );
   switch (action.type) {
     case FETCH_MENTOR_START:
       debugLog(action.type, action.payload);
