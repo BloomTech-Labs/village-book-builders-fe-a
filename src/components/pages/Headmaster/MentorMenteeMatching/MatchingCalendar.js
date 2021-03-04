@@ -85,7 +85,7 @@ const MatchingCalendar = props => {
         listData = [
           {
             type: 'success',
-            content: `Mentor ${props.match[0]['mentee']} & Mentee ${props.match[0]['mentor']} @ ${props.match[0]['time']}`,
+            content: `Mentor ${props.match[0]['mentee']} & Mentee ${props.match[0]['mentor']} @ ${props.match[0]['time']} Computer ${props.match[0]['computer']}`,
           },
         ];
         break;
@@ -234,12 +234,24 @@ const MatchingCalendar = props => {
               handleChange={e => handleChange(e)}
             >
               <Space direction="vertical">
-                <DatePicker name={calValue.date} handleChange={handleChange} />
+                <DatePicker
+                  name={calValue.date}
+                  handleChangecd={handleChange}
+                />
               </Space>
             </Form.Item>
           </Input.Group>
         </Form.Item>
-
+        <Form.Item label="Computer">
+          <Input.Group>
+            <Form.Item name="computer" noStyle>
+              <Select placeholder="Select">
+                <Option value="Yes">Yes</Option>
+                <Option value="No">No</Option>
+              </Select>
+            </Form.Item>
+          </Input.Group>
+        </Form.Item>
         <Form.Item>
           <Button htmlType="submit">Submit</Button>
         </Form.Item>
