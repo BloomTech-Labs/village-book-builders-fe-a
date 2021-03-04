@@ -132,6 +132,22 @@ const MatchingCalendar = props => {
   const onFinish = calValue => {
     console.log(calValue);
   };
+  const setMenteeValues = mentee => {
+    let value = mentee.first_name + ' ' + mentee.last_name;
+    return (
+      <Option value={value} key={mentee.id}>
+        {value}
+      </Option>
+    );
+  };
+  const setMentorValues = mentor => {
+    let value = mentor.first_name + ' ' + mentor.last_name;
+    return (
+      <Option value={value} key={mentor.id}>
+        {value}
+      </Option>
+    );
+  };
 
   return (
     <div>
@@ -158,9 +174,9 @@ const MatchingCalendar = props => {
                 placeholder="Please select a Mentor"
                 name={calValue.content}
               >
-                <Option value="Mentor Michael">Mentor Michael</Option>
-                <Option value="Mentor Pam">Mentor Pam</Option>
-                <Option value="Mentor Oscar">Mentor Oscar</Option>
+                {props.mentors.map(mentor => {
+                  return setMentorValues(mentor);
+                })}
               </Select>
             </Form.Item>
           </Input.Group>
@@ -174,9 +190,9 @@ const MatchingCalendar = props => {
               rules={[{ required: true, message: 'Mentee is required' }]}
             >
               <Select placeholder="Please select a mentee">
-                <Option value="Mentee Scott">Mentee Scott</Option>
-                <Option value="Mentee Beasly">Mentee Beasly</Option>
-                <Option value="Mentee Martinez">Mentee Martinez</Option>
+                {props.mentees.map(mentee => {
+                  return setMenteeValues(mentee);
+                })}
               </Select>
             </Form.Item>
           </Input.Group>
@@ -253,6 +269,7 @@ const mapStateToProps = state => {
     isloading: state.headmasterReducer.isLoading,
     mentees: state.headmasterReducer.mentees,
     match: state.headmasterReducer.match,
+    mentors: state.headmasterReducer.mentors,
   };
 };
 
