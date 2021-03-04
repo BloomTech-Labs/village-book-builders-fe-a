@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Divider, List, Avatar } from 'antd';
-import Moment from 'moment';
 import { fetchMentors } from '../../../state/actions/index';
 
 const MentorList = props => {

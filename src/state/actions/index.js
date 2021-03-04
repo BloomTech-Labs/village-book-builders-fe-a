@@ -64,7 +64,6 @@ export const fetchHeadmasterProfile = id => dispatch => {
   axiosWithAuth()
     .get(`/headmaster/${id}`) // change this later
     .then(res => {
-      console.log('fetchHeadmasterProfile action --> ', res.data);
       dispatch({
         type: actionTypes.FETCH_HEADMASTER_PROFILE,
         payload: res.data,
