@@ -134,12 +134,7 @@ const MatchingCalendar = props => {
   };
   const setMenteeValues = mentee => {
     let value = mentee.first_name + ' ' + mentee.last_name;
-    return (
-      <Option value={value} key={mentee.id}>
-        {value}
-      </Option>
-    );
-  };
+
   const setMentorValues = mentor => {
     let value = mentor.first_name + ' ' + mentor.last_name;
     return (
@@ -148,6 +143,7 @@ const MatchingCalendar = props => {
       </Option>
     );
   };
+
 
   return (
     <div>
@@ -193,6 +189,7 @@ const MatchingCalendar = props => {
                 {props.mentees.map(mentee => {
                   return setMenteeValues(mentee);
                 })}
+
               </Select>
             </Form.Item>
           </Input.Group>
