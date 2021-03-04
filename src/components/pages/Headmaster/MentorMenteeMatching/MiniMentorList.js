@@ -13,6 +13,9 @@ const MiniMentorList = props => {
   return (
     <div className="miniList">
       <h2>Mentor List</h2>
+      <button>
+        <a href="https://www.google.com" target="_blank"></a>
+      </button>
       <div>
         <Divider />
         <List
