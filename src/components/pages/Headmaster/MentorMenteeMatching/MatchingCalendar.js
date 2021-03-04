@@ -85,7 +85,7 @@ const MatchingCalendar = props => {
         listData = [
           {
             type: 'success',
-            content: `Mentor ${props.match[0]['mentee']} & Mentee ${props.match[0]['mentor']} @ ${props.match[0]['time']}`,
+            content: `Mentor ${props.match[0]['mentee']} & Mentee ${props.match[0]['mentor']} @ ${props.match[0]['time']} Computer ${props.match[0]['computer']}`,
           },
         ];
         break;
@@ -132,6 +132,22 @@ const MatchingCalendar = props => {
   const onFinish = calValue => {
     console.log(calValue);
   };
+  const setMenteeValues = mentee => {
+    let value = mentee.first_name + ' ' + mentee.last_name;
+    return (
+      <Option value={value} key={mentee.id}>
+        {value}
+      </Option>
+    );
+  };
+  const setMentorValues = mentor => {
+    let value = mentor.first_name + ' ' + mentor.last_name;
+    return (
+      <Option value={value} key={mentor.id}>
+        {value}
+      </Option>
+    );
+  };
 
   return (
     <div>
@@ -158,9 +174,9 @@ const MatchingCalendar = props => {
                 placeholder="Please select a Mentor"
                 name={calValue.content}
               >
-                <Option value="Mentor Michael">Mentor Michael</Option>
-                <Option value="Mentor Pam">Mentor Pam</Option>
-                <Option value="Mentor Oscar">Mentor Oscar</Option>
+                {props.mentors.map(mentor => {
+                  return setMentorValues(mentor);
+                })}
               </Select>
             </Form.Item>
           </Input.Group>
@@ -174,9 +190,9 @@ const MatchingCalendar = props => {
               rules={[{ required: true, message: 'Mentee is required' }]}
             >
               <Select placeholder="Please select a mentee">
-                <Option value="Mentee Scott">Mentee Scott</Option>
-                <Option value="Mentee Beasly">Mentee Beasly</Option>
-                <Option value="Mentee Martinez">Mentee Martinez</Option>
+                {props.mentees.map(mentee => {
+                  return setMenteeValues(mentee);
+                })}
               </Select>
             </Form.Item>
           </Input.Group>
@@ -218,12 +234,24 @@ const MatchingCalendar = props => {
               handleChange={e => handleChange(e)}
             >
               <Space direction="vertical">
-                <DatePicker name={calValue.date} handleChange={handleChange} />
+                <DatePicker
+                  name={calValue.date}
+                  handleChangecd={handleChange}
+                />
               </Space>
             </Form.Item>
           </Input.Group>
         </Form.Item>
-
+        <Form.Item label="Computer">
+          <Input.Group>
+            <Form.Item name="computer" noStyle>
+              <Select placeholder="Select">
+                <Option value="Yes">Yes</Option>
+                <Option value="No">No</Option>
+              </Select>
+            </Form.Item>
+          </Input.Group>
+        </Form.Item>
         <Form.Item>
           <Button htmlType="submit">Submit</Button>
         </Form.Item>
@@ -241,6 +269,7 @@ const mapStateToProps = state => {
     isloading: state.headmasterReducer.isLoading,
     mentees: state.headmasterReducer.mentees,
     match: state.headmasterReducer.match,
+    mentors: state.headmasterReducer.mentors,
   };
 };
 
