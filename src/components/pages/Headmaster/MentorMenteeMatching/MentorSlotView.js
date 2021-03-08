@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchMentorSlots } from '../../../../state/actions/index';
+import { Divider, List } from 'antd';
 
 const MentorSlotView = props => {
   const { fetchMentorSlots } = props;
@@ -10,9 +11,8 @@ const MentorSlotView = props => {
   }, [fetchMentorSlots]);
 
   return (
-    <div className="mentorAvail">
-      <h2>Mentor Availability</h2>
-      <div></div>
+    <div>
+      <h1>Mentor Time Slots</h1>
     </div>
   );
 };
