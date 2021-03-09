@@ -13,6 +13,7 @@ import HeadmasterProfile from './HeadmasterProfile/Profile.js';
 import ProfileForm from './HeadmasterProfile/ProfileForm.js';
 import MentorList from '../Mentor/MentorList.js';
 import MatchingCalendar from './MentorMenteeMatching/MatchingCalendar';
+import MentorSlotView from './MentorMenteeMatching/MentorSlotView';
 import { fetchHeadmasterProfile } from '../../../state/actions';
 import Logout from '../../Logout.js';
 import Mentees from './Mentees/Mentees.js';
@@ -81,6 +82,9 @@ const HeadmasterDashboard = props => {
                 Mentor Mentee Matching
               </NavLink>
             </Menu.Item>
+            <Menu.Item key="9" icon={<UnorderedListOutlined />}>
+              <NavLink to="/avail">Mentor Availability</NavLink>
+            </Menu.Item>
             <Menu.Item key="5" icon={<BookOutlined />}>
               <NavLink to="/school-village">School/Village</NavLink>
             </Menu.Item>
@@ -126,6 +130,7 @@ const HeadmasterDashboard = props => {
                 path="/mentor-mentee-matching"
                 component={MatchingCalendar}
               />
+              <Route path="/avail" component={MentorSlotView} />
               <Route path="/school-village">
                 <Village />
                 <Schools />
