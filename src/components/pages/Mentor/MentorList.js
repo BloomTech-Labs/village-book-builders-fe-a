@@ -11,7 +11,7 @@ const MentorList = props => {
     fetchMentors();
   }, [fetchMentors]);
 
-  console.log('props', props);
+  // console.log('props', props);
 
   return (
     <div className="menteeContainer">
@@ -27,37 +27,10 @@ const MentorList = props => {
                 avatar={<Avatar src={item.mentor_picture} />}
                 title={item.first_name + ' ' + item.last_name}
               />
-              <List.Item.Meta
-                title={<header>Academic Background</header>}
-                description={item.academic_description}
-              />
+
               <List.Item.Meta
                 title={<header>Email Address</header>}
                 description={item.email}
-              />
-              <List.Item.Meta
-                title={<header>Contact As Early As</header>}
-                description={item.availability.as_early_as}
-              />
-              <List.Item.Meta
-                title={<header>Contact As Late As</header>}
-                description={item.availability.as_late_as}
-              />
-              <List.Item.Meta
-                title={<header>Contact Methods</header>}
-                description={item.availability.methods}
-              />
-              <List.Item.Meta
-                title={<header>Time Zone</header>}
-                description={item.availability.time_zone}
-              />
-              <List.Item.Meta
-                title={<header>DOB</header>}
-                description={Moment(item.dob).format('DD-MM-YYYY')}
-              />
-              <List.Item.Meta
-                title={<header>Primary Language</header>}
-                description={item.primary_language}
               />
             </List.Item>
           )}

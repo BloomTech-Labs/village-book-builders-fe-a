@@ -27,6 +27,7 @@ import {
   FormOutlined,
   LogoutOutlined,
 } from '@ant-design/icons';
+import TimeSlotsListView from './MentorMenteeMatching/TimeSlotsListView';
 
 const HeadmasterDashboard = props => {
   const { profile } = props;
@@ -34,7 +35,6 @@ const HeadmasterDashboard = props => {
   useEffect(() => {
     props.fetchHeadmasterProfile(1); // change this later with login
   }, []);
-  // console.log(profile);
 
   const { Content, Sider } = Layout;
 
@@ -83,6 +83,9 @@ const HeadmasterDashboard = props => {
               </NavLink>
             </Menu.Item>
             <Menu.Item key="9" icon={<UnorderedListOutlined />}>
+              <NavLink to="/timeslots-listview">Available Times</NavLink>
+            </Menu.Item>
+            <Menu.Item key="10" icon={<UnorderedListOutlined />}>
               <NavLink to="/avail">Mentor Availability</NavLink>
             </Menu.Item>
             <Menu.Item key="5" icon={<BookOutlined />}>
@@ -131,6 +134,7 @@ const HeadmasterDashboard = props => {
                 component={MatchingCalendar}
               />
               <Route path="/avail" component={MentorSlotView} />
+              <Route path="/timeslots-listview" component={TimeSlotsListView} />
               <Route path="/school-village">
                 <Village />
                 <Schools />

@@ -85,7 +85,7 @@ const MatchingCalendar = props => {
         listData = [
           {
             type: 'success',
-            content: `Mentor ${props.match[0]['mentee']} & Mentee ${props.match[0]['mentor']} @ ${props.match[0]['time']}`,
+            content: `Mentor ${props.match[0]['mentee']} & Mentee ${props.match[0]['mentor']} @ ${props.match[0]['time']} Computer ${props.match[0]['computer']}`,
           },
         ];
         break;
@@ -132,108 +132,132 @@ const MatchingCalendar = props => {
   const onFinish = calValue => {
     console.log(calValue);
   };
+  const setMenteeValues = mentee => {
+    let value = mentee.first_name + ' ' + mentee.last_name;
 
-  return (
-    <div>
-      <h1>Mentor - Mentee Matching</h1>
-      <div className="calStyling">
-        <Calendar
-          dateCellRender={dateCellRender}
-          monthCellRender={monthCellRender}
-          onPanelChange={onPanelChange}
-        />
-      </div>
-      <h3>Please complete all the fields below to fill a time slot.</h3>
+    const setMentorValues = mentor => {
+      let value = mentor.first_name + ' ' + mentor.last_name;
+      return (
+        <Option value={value} key={mentor.id}>
+          {value}
+        </Option>
+      );
+    };
 
-      <Form onFinish={onFinish}>
-        <Form.Item label="Mentor">
-          <Input.Group>
-            <Form.Item
-              name="content"
-              noStyle
-              rules={[{ required: true, message: 'Mentor is required' }]}
-              onChange={e => handleChange(e)}
-            >
-              <Select
-                placeholder="Please select a Mentor"
-                name={calValue.content}
+    return (
+      <div>
+        <h1>Mentor - Mentee Matching</h1>
+        <div className="calStyling">
+          <Calendar
+            dateCellRender={dateCellRender}
+            monthCellRender={monthCellRender}
+            onPanelChange={onPanelChange}
+          />
+        </div>
+        <h3>Please complete all the fields below to fill a time slot.</h3>
+
+        <Form onFinish={onFinish}>
+          <Form.Item label="Mentor">
+            <Input.Group>
+              <Form.Item
+                name="content"
+                noStyle
+                rules={[{ required: true, message: 'Mentor is required' }]}
+                onChange={e => handleChange(e)}
               >
-                <Option value="Mentor Michael">Mentor Michael</Option>
-                <Option value="Mentor Pam">Mentor Pam</Option>
-                <Option value="Mentor Oscar">Mentor Oscar</Option>
-              </Select>
-            </Form.Item>
-          </Input.Group>
-        </Form.Item>
+                <Select
+                  placeholder="Please select a Mentor"
+                  name={calValue.content}
+                >
+                  {props.mentors.map(mentor => {
+                    return setMentorValues(mentor);
+                  })}
+                </Select>
+              </Form.Item>
+            </Input.Group>
+          </Form.Item>
 
-        <Form.Item label="Mentee">
-          <Input.Group>
-            <Form.Item
-              name="mentee"
-              noStyle
-              rules={[{ required: true, message: 'Mentee is required' }]}
-            >
-              <Select placeholder="Please select a mentee">
-                <Option value="Mentee Scott">Mentee Scott</Option>
-                <Option value="Mentee Beasly">Mentee Beasly</Option>
-                <Option value="Mentee Martinez">Mentee Martinez</Option>
-              </Select>
-            </Form.Item>
-          </Input.Group>
-        </Form.Item>
+          <Form.Item label="Mentee">
+            <Input.Group>
+              <Form.Item
+                name="mentee"
+                noStyle
+                rules={[{ required: true, message: 'Mentee is required' }]}
+              >
+                <Select placeholder="Please select a mentee">
+                  {props.mentees.map(mentee => {
+                    return setMenteeValues(mentee);
+                  })}
+                </Select>
+              </Form.Item>
+            </Input.Group>
+          </Form.Item>
 
-        <Form.Item id="form_label" label="Time slot">
-          <Input.Group>
-            <Form.Item
-              name="slot"
-              noStyle
-              rules={[{ required: true, message: 'Time slot is required' }]}
-            >
-              <Select placeholder="Please select a time slot.">
-                <Option value="9am">9am</Option>
-                <Option value="10am">10am</Option>
-                <Option value="11am">11am</Option>
-                <Option value="12pm">12pm</Option>
-                <Option value="1pm">1pm</Option>
-                <Option value="2pm">2pm</Option>
-                <Option value="3pm">3pm</Option>
-                <Option value="4pm">4pm</Option>
-                <Option value="5pm">5pm</Option>
-              </Select>
-            </Form.Item>
-          </Input.Group>
-        </Form.Item>
+          <Form.Item id="form_label" label="Time slot">
+            <Input.Group>
+              <Form.Item
+                name="slot"
+                noStyle
+                rules={[{ required: true, message: 'Time slot is required' }]}
+              >
+                <Select placeholder="Please select a time slot.">
+                  <Option value="9am">9am</Option>
+                  <Option value="10am">10am</Option>
+                  <Option value="11am">11am</Option>
+                  <Option value="12pm">12pm</Option>
+                  <Option value="1pm">1pm</Option>
+                  <Option value="2pm">2pm</Option>
+                  <Option value="3pm">3pm</Option>
+                  <Option value="4pm">4pm</Option>
+                  <Option value="5pm">5pm</Option>
+                </Select>
+              </Form.Item>
+            </Input.Group>
+          </Form.Item>
 
-        {/* https://ant.design/components/date-picker/#header
+          {/* https://ant.design/components/date-picker/#header
         default onChange
         function onChange(date, dateString) {
           console.log(date, dateString);
         } */}
-        <Form.Item label="Date">
-          <Input.Group>
-            <Form.Item
-              name="date"
-              noStyle
-              // rules={[{ required: true, message: 'Date is required' }]}
-              handleChange={e => handleChange(e)}
-            >
-              <Space direction="vertical">
-                <DatePicker name={calValue.date} handleChange={handleChange} />
-              </Space>
-            </Form.Item>
-          </Input.Group>
-        </Form.Item>
-
-        <Form.Item>
-          <Button htmlType="submit">Submit</Button>
-        </Form.Item>
-      </Form>
-      <div className="miniListContainer">
-        <MiniMentorList />
-        <MiniMenteeList />
+          <Form.Item label="Date">
+            <Input.Group>
+              <Form.Item
+                name="date"
+                noStyle
+                // rules={[{ required: true, message: 'Date is required' }]}
+                handleChange={e => handleChange(e)}
+              >
+                <Space direction="vertical">
+                  <DatePicker
+                    name={calValue.date}
+                    handleChangecd={handleChange}
+                  />
+                </Space>
+              </Form.Item>
+            </Input.Group>
+          </Form.Item>
+          <Form.Item label="Computer">
+            <Input.Group>
+              <Form.Item name="computer" noStyle>
+                <Select placeholder="Select">
+                  <Option value="Yes">Yes</Option>
+                  <Option value="No">No</Option>
+                </Select>
+              </Form.Item>
+            </Input.Group>
+          </Form.Item>
+          <Form.Item>
+            <Button htmlType="submit">Submit</Button>
+          </Form.Item>
+        </Form>
+        <div className="miniListContainer">
+          <MiniMentorList />
+          <MiniMenteeList />
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 };
 
 const mapStateToProps = state => {
@@ -241,6 +265,7 @@ const mapStateToProps = state => {
     isloading: state.headmasterReducer.isLoading,
     mentees: state.headmasterReducer.mentees,
     match: state.headmasterReducer.match,
+    mentors: state.headmasterReducer.mentors,
   };
 };
 
