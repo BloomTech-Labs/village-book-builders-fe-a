@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchMentors } from '../../../../state/actions/index';
 import { Divider, List } from 'antd';
+import Item from 'antd/lib/list/Item';
 
 const MentorSlotView = props => {
   const { fetchMentors } = props;
@@ -15,7 +16,18 @@ const MentorSlotView = props => {
       <h1>Mentor Time Slots</h1>
       <div>
         <Divider />
-        <List></List>
+        <List
+          itemLayout="vertical"
+          dataSource={props.mentors}
+          renderItem={item => (
+            <List.Item>
+              <List.Item.Meta
+                title={<header>availability</header>}
+                description={item.availability.as_early_as}
+              />
+            </List.Item>
+          )}
+        />
         <Divider />
       </div>
     </div>
