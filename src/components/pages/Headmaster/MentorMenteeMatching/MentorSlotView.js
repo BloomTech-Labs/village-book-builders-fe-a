@@ -1,18 +1,23 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchMentorSlots } from '../../../../state/actions/index';
+import { fetchMentors } from '../../../../state/actions/index';
 import { Divider, List } from 'antd';
 
 const MentorSlotView = props => {
-  const { fetchMentorSlots } = props;
+  const { fetchMentors } = props;
 
   useEffect(() => {
-    fetchMentorSlots();
-  }, [fetchMentorSlots]);
+    fetchMentors();
+  }, [fetchMentors]);
 
   return (
     <div>
       <h1>Mentor Time Slots</h1>
+      <div>
+        <Divider />
+        <List></List>
+        <Divider />
+      </div>
     </div>
   );
 };
@@ -20,8 +25,8 @@ const MentorSlotView = props => {
 const mapStateToProps = state => {
   return {
     isLoading: state.headmasterReducer.isLoading,
-    slot: state.headmasterReducer.slot,
+    mentors: state.headmasterReducer.mentors,
   };
 };
 
-export default connect(mapStateToProps, { fetchMentorSlots })(MentorSlotView);
+export default connect(mapStateToProps, { fetchMentors })(MentorSlotView);
