@@ -11,7 +11,7 @@ const MentorList = props => {
     fetchMentors();
   }, [fetchMentors]);
 
-  // console.log('props', props);
+  console.log('props', props.mentors);
 
   return (
     <div className="menteeContainer">
@@ -31,6 +31,29 @@ const MentorList = props => {
               <List.Item.Meta
                 title={<header>Email Address</header>}
                 description={item.email}
+              />
+              <List.Item.Meta
+                title={<header>Primary Language</header>}
+                description={item.primary_language}
+              />
+              <List.Item.Meta
+                title={<header>Time Zone</header>}
+                description={item.availability.time_zone}
+              />
+              <List.Item.Meta
+                title={<header>Times available</header>}
+                description={
+                  'from ' +
+                  item.availability.as_early_as +
+                  ' to ' +
+                  item.availability.as_late_as
+                }
+              />
+              <List.Item.Meta
+                title={<header>Contact by</header>}
+                description={item.availability.methods.map(method => {
+                  return ' ' + method;
+                })}
               />
             </List.Item>
           )}
