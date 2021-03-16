@@ -85,7 +85,7 @@ const MatchingCalendar = props => {
         listData = [
           {
             type: 'success',
-            content: `Mentor ${props.match[0]['mentee']} & Mentee ${props.match[0]['mentor']} @ ${props.match[0]['time']} Computer ${props.match[0]['computer']}`,
+            content: `Mentor ${props.match[0]['mentee']} & Mentee ${props.match[0]['mentor']} @ ${props.match[0]['time']}`,
           },
         ];
         break;
@@ -134,7 +134,12 @@ const MatchingCalendar = props => {
   };
   const setMenteeValues = mentee => {
     let value = mentee.first_name + ' ' + mentee.last_name;
-
+    return (
+      <Option value={value} key={mentee.id}>
+        {value}
+      </Option>
+    );
+  };
   const setMentorValues = mentor => {
     let value = mentor.first_name + ' ' + mentor.last_name;
     return (
@@ -143,7 +148,6 @@ const MatchingCalendar = props => {
       </Option>
     );
   };
-
 
   return (
     <div>
@@ -189,7 +193,6 @@ const MatchingCalendar = props => {
                 {props.mentees.map(mentee => {
                   return setMenteeValues(mentee);
                 })}
-
               </Select>
             </Form.Item>
           </Input.Group>
@@ -231,24 +234,12 @@ const MatchingCalendar = props => {
               handleChange={e => handleChange(e)}
             >
               <Space direction="vertical">
-                <DatePicker
-                  name={calValue.date}
-                  handleChangecd={handleChange}
-                />
+                <DatePicker name={calValue.date} handleChange={handleChange} />
               </Space>
             </Form.Item>
           </Input.Group>
         </Form.Item>
-        <Form.Item label="Computer">
-          <Input.Group>
-            <Form.Item name="computer" noStyle>
-              <Select placeholder="Select">
-                <Option value="Yes">Yes</Option>
-                <Option value="No">No</Option>
-              </Select>
-            </Form.Item>
-          </Input.Group>
-        </Form.Item>
+
         <Form.Item>
           <Button htmlType="submit">Submit</Button>
         </Form.Item>
