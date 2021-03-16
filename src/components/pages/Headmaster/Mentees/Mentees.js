@@ -5,6 +5,7 @@ import { checkToken, fetchMentees } from '../../../../state/actions/index';
 import MenteeForm from './MenteeForm';
 import MenteeProfile from './MenteeProfile';
 import '../../../../style.css';
+import Emoji from '../../../common/Emoji';
 
 const Mentees = props => {
   let menteesSelection = [...props.mentees];
@@ -52,6 +53,13 @@ const Mentees = props => {
   useEffect(() => {
     props.fetchMentees();
   }, []);
+  function checkMentee(mentee) {
+    if (!mentee.mentorId) {
+      return <Emoji symbol="🚩" label="flag" />;
+    } else {
+      return;
+    }
+  }
 
   return (
     <div className="menteeContainer">
@@ -80,9 +88,10 @@ const Mentees = props => {
                   <List.Item.Meta
                     avatar={<Avatar src={item.mentee_picture} />}
                     title={
-                      <a href="https://ant.design">
+                      <p>
                         {item.first_name + ' ' + item.last_name}
-                      </a>
+                        {checkMentee(item)}
+                      </p>
                     }
                     description={item.academic_description}
                   />
