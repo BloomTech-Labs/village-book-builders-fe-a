@@ -7,13 +7,18 @@ import {
   Select,
   Space,
   Button,
+  Modal,
 } from 'antd';
 import 'antd/dist/antd.css';
 import React, { useEffect, useState } from 'react';
+import {} from 'antd';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import MiniMentorList from './MiniMentorList';
 import MiniMenteeList from './MiniMenteeList';
 import { fetchCalendar } from '../../../../state/actions/index';
+import EventForm from './EventForm';
+import EventDetails from './EventDetails';
 
 const initialState = {
   date: '',
@@ -23,10 +28,29 @@ const initialState = {
 
 const MatchingCalendar = props => {
   const { fetchCalendar } = props;
-
+  const [showModal, setShowModal] = useState(false);
+  const [events, setEvents] = useState([]);
+  const [editing, setEditing] = useState(null);
+  const [currentEvent, setCurrentEvent] = useState({});
   useEffect(() => {
     fetchCalendar();
   }, [fetchCalendar]);
+
+  const onSelect = dateString => {
+    let val = moment(dateString).format('D');
+
+    if (showModal) {
+      // Closing Modal
+      setShowModal(false);
+      setCurrentEvent({});
+      setEditing(false);
+    } else {
+      // Opening Modal
+      let eventSelected = events.filter(e => Number(e.case) == val)[0];
+      setCurrentEvent(eventSelected);
+      setShowModal(true);
+    }
+  };
 
   //-----------------------start calendar code - https://ant.design/components/calendar/
   function dateCellRender(value) {
@@ -60,6 +84,7 @@ const MatchingCalendar = props => {
 
   function getListData(value) {
     let listData;
+    let filterEvents;
     switch (value.date()) {
       //this is how to apply props to calendar data - will need to passed through in function from the form in future builds.
       //Per TPL here is where to start.
@@ -81,38 +106,349 @@ const MatchingCalendar = props => {
 
       //It might mean having different variables in each of those switch statements rather than using
       // listData every time, but depends how you set it up I suppose.
+
+      // case 1:
+      //   listData = [
+      //     {
+      //       type: 'success',
+      //       content: `Mentor ${props.match[0]['mentee']} & Mentee ${props.match[0]['mentor']} @ ${props.match[0]['time']}`,
+      //     },
+      //   ];
+      //   break;
+      // case 5:
+      //   listData = [
+      //     {
+      //       type: 'success',
+      //       content: `Mentor ${props.match[0]['mentee']} & Mentee ${props.match[0]['mentor']} @ ${props.match[0]['time']}`,
+      //     },
+      //   ];
+      //   break;
+      // case 11:
+      //   listData = [
+      //     {
+      //       type: 'success',
+      //       content: `Mentor ${props.match[0]['mentee']} & Mentee ${props.match[0]['mentor']} @ ${props.match[0]['time']}`,
+      //     },
+      //   ];
+      //   break;
+      // case 16:
+      //   listData = [
+      //     {
+      //       type: 'success',
+      //       content: `Mentor ${props.match[0]['mentee']} & Mentee ${props.match[0]['mentor']} @ ${props.match[0]['time']}`,
+      //     },
+      //   ];
+      //   break;
       case 1:
-        listData = [
-          {
-            type: 'success',
-            content: `Mentor ${props.match[0]['mentee']} & Mentee ${props.match[0]['mentor']} @ ${props.match[0]['time']}`,
-          },
-        ];
-        break;
+        filterEvents = events.filter(i => Number(i.case) === 1);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 2:
+        filterEvents = events.filter(i => Number(i.case) === 2);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 3:
+        filterEvents = events.filter(i => Number(i.case) === 3);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 4:
+        filterEvents = events.filter(i => Number(i.case) === 4);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
       case 5:
-        listData = [
-          {
-            type: 'success',
-            content: `Mentor ${props.match[0]['mentee']} & Mentee ${props.match[0]['mentor']} @ ${props.match[0]['time']}`,
-          },
-        ];
-        break;
+        filterEvents = events.filter(i => Number(i.case) === 5);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 6:
+        filterEvents = events.filter(i => Number(i.case) === 6);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 7:
+        filterEvents = events.filter(i => Number(i.case) === 7);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 8:
+        filterEvents = events.filter(i => Number(i.case) === 8);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 9:
+        filterEvents = events.filter(i => Number(i.case) === 9);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 10:
+        filterEvents = events.filter(i => Number(i.case) === 10);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
       case 11:
-        listData = [
-          {
-            type: 'success',
-            content: `Mentor ${props.match[0]['mentee']} & Mentee ${props.match[0]['mentor']} @ ${props.match[0]['time']}`,
-          },
-        ];
-        break;
+        filterEvents = events.filter(i => Number(i.case) === 11);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 12:
+        filterEvents = events.filter(i => Number(i.case) === 12);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 13:
+        filterEvents = events.filter(i => Number(i.case) === 13);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 14:
+        filterEvents = events.filter(i => Number(i.case) === 14);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 15:
+        filterEvents = events.filter(i => Number(i.case) === 15);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
       case 16:
-        listData = [
-          {
-            type: 'success',
-            content: `Mentor ${props.match[0]['mentee']} & Mentee ${props.match[0]['mentor']} @ ${props.match[0]['time']}`,
-          },
-        ];
-        break;
+        filterEvents = events.filter(i => Number(i.case) === 16);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 17:
+        filterEvents = events.filter(i => Number(i.case) === 17);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 18:
+        filterEvents = events.filter(i => Number(i.case) === 18);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 19:
+        filterEvents = events.filter(i => Number(i.case) === 19);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 20:
+        filterEvents = events.filter(i => Number(i.case) === 20);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 21:
+        filterEvents = events.filter(i => Number(i.case) === 21);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 22:
+        filterEvents = events.filter(i => Number(i.case) === 22);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 23:
+        filterEvents = events.filter(i => Number(i.case) === 23);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 24:
+        filterEvents = events.filter(i => Number(i.case) === 24);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 25:
+        filterEvents = events.filter(i => Number(i.case) === 25);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 26:
+        filterEvents = events.filter(i => Number(i.case) === 26);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 27:
+        filterEvents = events.filter(i => Number(i.case) === 27);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 28:
+        filterEvents = events.filter(i => Number(i.case) === 28);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 29:
+        filterEvents = events.filter(i => Number(i.case) === 29);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 30:
+        filterEvents = events.filter(i => Number(i.case) === 30);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
+      case 31:
+        filterEvents = events.filter(i => Number(i.case) === 31);
+        if (events.length) {
+          listData = filterEvents.map(e => {
+            return { content: e.content, type: e.type };
+          });
+          break;
+        } else {
+          break;
+        }
       default:
     }
     return listData || [];
@@ -129,8 +465,20 @@ const MatchingCalendar = props => {
     setCalValue({ ...calValue, [e.target.name]: e.target.value });
   };
 
-  const onFinish = calValue => {
-    console.log(calValue);
+  const onFinish = value => {
+    let cased = moment(calValue.date).format('D');
+    let title = `${value.content} & ${value.mentee} @ ${value.slot}`;
+    let type = 'success';
+    const finished = {
+      ...value,
+      content: title,
+      type: type,
+      case: cased,
+      date: calValue.date,
+      mentor: value.content,
+    };
+    console.log(value);
+    setEvents([...events, finished]);
   };
   const setMenteeValues = mentee => {
     let value = mentee.first_name + ' ' + mentee.last_name;
@@ -140,8 +488,12 @@ const MatchingCalendar = props => {
         {value}
       </Option>
     );
-
   };
+
+  function handleDate(date, dateString) {
+    console.log(date, dateString);
+    setCalValue({ ...calValue, date: dateString });
+  }
   const setMentorValues = mentor => {
     let value = mentor.first_name + ' ' + mentor.last_name;
     return (
@@ -150,16 +502,22 @@ const MatchingCalendar = props => {
       </Option>
     );
   };
+  console.log(props.mentees);
 
   return (
     <div>
       <h1>Mentor - Mentee Matching</h1>
       <div className="calStyling">
-        <Calendar
-          dateCellRender={dateCellRender}
-          monthCellRender={monthCellRender}
-          onPanelChange={onPanelChange}
-        />
+        {events.length > 0 ? (
+          <Calendar
+            dateCellRender={dateCellRender}
+            monthCellRender={monthCellRender}
+            onPanelChange={onPanelChange}
+            onSelect={onSelect}
+          />
+        ) : (
+          ''
+        )}
       </div>
       <h3>Please complete all the fields below to fill a time slot.</h3>
 
@@ -233,10 +591,10 @@ const MatchingCalendar = props => {
               name="date"
               noStyle
               // rules={[{ required: true, message: 'Date is required' }]}
-              handleChange={e => handleChange(e)}
+              onChange={e => handleDate(e)}
             >
               <Space direction="vertical">
-                <DatePicker name={calValue.date} handleChange={handleChange} />
+                <DatePicker name="date" onChange={handleDate} />
               </Space>
             </Form.Item>
           </Input.Group>
@@ -250,6 +608,37 @@ const MatchingCalendar = props => {
         <MiniMentorList />
         <MiniMenteeList />
       </div>
+      <Modal
+        className="menteeModal"
+        visible={showModal}
+        title="Event Details"
+        onCancel={() => {
+          setShowModal(!showModal);
+        }}
+        maskClosable
+        destroyOnClose
+        okText="Submit"
+        footer={[
+          <Button key="edit" onClick={() => setEditing(true)}>
+            Edit
+          </Button>,
+          <Button key="submit" onClick={() => setEditing(false)}>
+            View
+          </Button>,
+        ]}
+      >
+        {editing ? (
+          <EventForm
+            currentEvent={currentEvent}
+            events={events}
+            setEvents={setEvents}
+            mentees={props.mentees}
+            mentors={props.mentors}
+          />
+        ) : (
+          <EventDetails currentEvent={currentEvent} />
+        )}
+      </Modal>
     </div>
   );
 };

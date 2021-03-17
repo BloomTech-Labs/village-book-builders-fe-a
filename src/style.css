@@ -1,113 +1,115 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
-  #menteeTitle {
-    text-align: center;
-  }
-  
-  .exploreWrapper {
-    margin: 0 6pt;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  }
-  
-  .listItemWrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .listItemButtonWrapper {
-    display: flex;
-    justify-content: flex-end;
-    margin: 6pt 0;
-  }
-  .listItemButton {
-    width: 90px;
-    margin-right: 10px;
-  }
-  
-  .menteeModal {
-    background-color: rgb(236, 166, 73);
-  }
-  
-  .menteeProfileWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+#menteeTitle {
+  text-align: center;
+}
+.ant-modal-title {
+  text-align: center;
+}
+.exploreWrapper {
+  margin: 0 6pt;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 
-  /* Dashboard Menu */
-  .menuIcon {
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
-    transition: 'bottom 200ms linear';
-  }
+.listItemWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 
-  .menuMove {
-    position: fixed;
-    bottom: 500px;
-    width: 100%;
-    transition: 'bottom 200ms linear';
-  }
+.listItemButtonWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin: 6pt 0;
+}
+.listItemButton {
+  width: 90px;
+  margin-right: 10px;
+}
 
-  .menuButton {
-    width: 100%;
-    background: #549bea;
-    border: 1px solid #549bea;
-    height: 3rem;
-  }
+.menteeModal {
+  background-color: rgb(236, 166, 73);
+}
 
-  /* Profile Pages */
-  .profile-item-title {
-    font-weight: bold;
-  }
+.menteeProfileWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
-  .profile-item {
-    margin: .5rem 0;
-  }
+/* Dashboard Menu */
+.menuIcon {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  transition: 'bottom 200ms linear';
+}
 
-  .profile-pic {
-    margin: 1rem 0;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-  }
+.menuMove {
+  position: fixed;
+  bottom: 500px;
+  width: 100%;
+  transition: 'bottom 200ms linear';
+}
 
-  .page-title {
-    font-size: 1.5rem;
-  }
+.menuButton {
+  width: 100%;
+  background: #549bea;
+  border: 1px solid #549bea;
+  height: 3rem;
+}
 
-  /* School List */
-  .school-container span {
-    font-weight: bold;
-  }
+/* Profile Pages */
+.profile-item-title {
+  font-weight: bold;
+}
 
-  .school-container div {
-    line-height: 2rem;
-  }
+.profile-item {
+  margin: 0.5rem 0;
+}
 
-   /* Village List */
-   .village-container span {
-    font-weight: bold;
-  }
+.profile-pic {
+  margin: 1rem 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
 
-  .village-container div {
-    line-height: 2rem;
-  }
+.page-title {
+  font-size: 1.5rem;
+}
 
-  .school-village-container {
-    padding: 0 2rem;
-  }
+/* School List */
+.school-container span {
+  font-weight: bold;
+}
 
-  /* All Forms */
-  .form-container {
-    display: flex;
-    justify-content: center;
-  }
+.school-container div {
+  line-height: 2rem;
+}
 
-  /* Mentee & Mentor Matching Component Lists Styling */
+/* Village List */
+.village-container span {
+  font-weight: bold;
+}
+
+.village-container div {
+  line-height: 2rem;
+}
+
+.school-village-container {
+  padding: 0 2rem;
+}
+
+/* All Forms */
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Mentee & Mentor Matching Component Lists Styling */
 .miniListContainer {
   display: flex;
   flex-direction: row;
