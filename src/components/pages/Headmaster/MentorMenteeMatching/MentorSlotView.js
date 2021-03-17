@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchMentors } from '../../../../state/actions/index';
-import { Divider, List } from 'antd';
-import Item from 'antd/lib/list/Item';
+import { Divider, List, Avatar } from 'antd';
 
 const MentorSlotView = props => {
   const { fetchMentors } = props;
@@ -10,6 +9,8 @@ const MentorSlotView = props => {
   useEffect(() => {
     fetchMentors();
   }, [fetchMentors]);
+
+  console.log('props.mentors', props.mentors);
 
   return (
     <div>
@@ -22,8 +23,20 @@ const MentorSlotView = props => {
           renderItem={item => (
             <List.Item>
               <List.Item.Meta
-                title={<header>availability</header>}
-                description={item.availability.as_early_as}
+                avatar={<Avatar src={item.mentor_picture} />}
+                title={item.first_name + ' ' + item.last_name}
+              />
+              <List.Item.Meta
+                title={<header>Time Zone:</header>}
+                description={item.availability.time_zone}
+              />
+              <List.Item.Meta
+                title={<header>Availability:</header>}
+                description={
+                  item.availability.as_early_as +
+                  ' - ' +
+                  item.availability.as_late_as
+                }
               />
             </List.Item>
           )}
