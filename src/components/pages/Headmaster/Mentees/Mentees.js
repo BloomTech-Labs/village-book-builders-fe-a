@@ -42,17 +42,10 @@ const Mentees = props => {
     }
   };
 
-  // if (Array.isArray(menteesSelection)) {
-  //   menteesSelection = menteesSelection.filter(
-  //     item =>
-  //       item.first_name.toLowerCase().includes(search.toLowerCase()) ||
-  //       item.last_name.toLowerCase().includes(search.toLowerCase())
-  //   );
-  // }
-
   useEffect(() => {
     props.fetchMentees();
   }, []);
+
   function checkMentee(mentee) {
     if (!mentee.mentorId) {
       return <Emoji symbol="🚩" label="flag" />;
@@ -80,7 +73,9 @@ const Mentees = props => {
         <Divider />
         <List
           itemLayout="horizontal"
-          dataSource={menteesSelection}
+          dataSource={menteesSelection.filter(mentee =>
+            mentee.last_name.includes(search)
+          )}
           renderItem={item => (
             <List.Item>
               <div className="listItemWrapper">

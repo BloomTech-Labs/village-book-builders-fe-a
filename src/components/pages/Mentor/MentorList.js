@@ -1,26 +1,42 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Divider, List, Avatar } from 'antd';
+import { Divider, List, Avatar, Input } from 'antd';
 import Moment from 'moment';
-import { fetchMentors } from '../../../state/actions/index';
+import {
+  fetchMentors,
+  fetchMentorsBySearch,
+} from '../../../state/actions/index';
 
 const MentorList = props => {
   const { fetchMentors } = props;
+  const [search, setSearch] = useState('');
 
+  console.log(search);
   useEffect(() => {
     fetchMentors();
   }, [fetchMentors]);
 
-  console.log('props', props.mentors);
+  const searchHandler = e => {
+    setSearch(e.target.value);
+  };
 
   return (
     <div className="menteeContainer">
       <h1 id="menteeTittle">Mentor List</h1>
       <div className="exploreWrapper">
+        <Input.Search
+          value={search}
+          placeholder="Search by Name"
+          style={{ width: '80%', alignSelf: 'center' }}
+          onChange={searchHandler}
+          onSubmit={fetchMentorsBySearch(search)}
+        />
         <Divider />
         <List
           itemLayout="vertical"
-          dataSource={props.mentors}
+          dataSource={props.mentors.filter(mentor =>
+            mentor.last_name.includes(search)
+          )}
           renderItem={item => (
             <List.Item>
               <List.Item.Meta

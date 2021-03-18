@@ -254,6 +254,25 @@ export const fetchMentors = () => dispatch => {
     );
 };
 
+export const fetchMentorsBySearch = search => dispatch => {
+  dispatch({ type: actionTypes.FETCH_MENTOR_BY_LAST_NAME_START });
+  axiosWithAuth()
+    .get(`/mentor?last_name=${search}`)
+    .then(res => {
+      console.log('inside the action', res.data);
+      dispatch({
+        type: actionTypes.FETCH_MENTOR_BY_LAST_NAME_SUCCESS,
+        payload: res.data,
+      });
+    })
+    .catch(err =>
+      dispatch({
+        type: actionTypes.FETCH_MENTOR_BY_LAST_NAME_FAILURE,
+        payload: err,
+      })
+    );
+};
+
 export const fetchMentorSlots = () => dispatch => {
   dispatch({ type: actionTypes.FETCH_MENTOR_SLOTS_START });
   axiosWithAuth()
