@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Divider, List, Avatar, Input } from 'antd';
-import Moment from 'moment';
+import { Divider, List, Avatar, Input, Menu, Dropdown } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+
 import {
   fetchMentors,
   fetchMentorsBySearch,
@@ -10,8 +11,8 @@ import {
 const MentorList = props => {
   const { fetchMentors } = props;
   const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState('last_name');
 
-  console.log(search);
   useEffect(() => {
     fetchMentors();
   }, [fetchMentors]);
@@ -19,11 +20,36 @@ const MentorList = props => {
   const searchHandler = e => {
     setSearch(e.target.value);
   };
+  let searchArray = [
+    'Email address',
+    'Primary Language',
+    'Time-zone',
+    'First Name',
+    'Last Name',
+  ];
+
+  const menu = (
+    <Menu>
+      {searchArray.map(item => {
+        return (
+          <Menu.Item>
+            <p>{item}</p>
+          </Menu.Item>
+        );
+      })}
+    </Menu>
+  );
 
   return (
     <div className="menteeContainer">
       <h1 id="menteeTittle">Mentor List</h1>
       <div className="exploreWrapper">
+        <Dropdown overlay={menu}>
+          <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+            Search By <DownOutlined />
+          </a>
+        </Dropdown>
+
         <Input.Search
           value={search}
           placeholder="Search by Name"
