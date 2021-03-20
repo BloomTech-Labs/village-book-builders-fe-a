@@ -20,25 +20,49 @@ const MentorList = props => {
   const searchHandler = e => {
     setSearch(e.target.value);
   };
-  let searchArray = [
-    'Email address',
-    'Primary Language',
-    'Time-zone',
-    'First Name',
-    'Last Name',
-  ];
 
   const menu = (
     <Menu>
-      {searchArray.map(item => {
-        return (
-          <Menu.Item>
-            <p>{item}</p>
-          </Menu.Item>
-        );
-      })}
+      <Menu.Item>
+        <p onClick={() => setFilter('email_address')}>Email Address</p>
+      </Menu.Item>
+      <Menu.Item>
+        <p onClick={() => setFilter('primary_language')}>Primary Language</p>
+      </Menu.Item>
+      <Menu.Item>
+        <p onClick={() => setFilter('time_zone')}>Time-zone</p>
+      </Menu.Item>
+      <Menu.Item>
+        <p onClick={() => setFilter('first_name')}>First Name</p>
+      </Menu.Item>
+      <Menu.Item>
+        <p onClick={() => setFilter('last_name')}>Last Name</p>
+      </Menu.Item>
     </Menu>
   );
+  let ds = props.mentors;
+  let holder = 'Search by Last Name';
+
+  if (filter == 'email_address') {
+    ds = props.mentors.filter(mentor => mentor.email.includes(search));
+    holder = 'Search by Email Address';
+  } else if (filter == 'primary_language') {
+    ds = props.mentors.filter(mentor =>
+      mentor.primary_language.includes(search)
+    );
+    holder = 'Search by Primary Language';
+  } else if (filter == 'time_zone') {
+    ds = props.mentors.filter(mentor =>
+      mentor.availability.time_zone.includes(search)
+    );
+    holder = 'Search by time-zone';
+  } else if (filter == 'first_name') {
+    ds = props.mentors.filter(mentor => mentor.first_name.includes(search));
+    holder = 'Search by First Name';
+  } else {
+    ds = props.mentors.filter(mentor => mentor.last_name.includes(search));
+    holder = 'Search by Last Name';
+  }
 
   return (
     <div className="menteeContainer">
@@ -52,7 +76,7 @@ const MentorList = props => {
 
         <Input.Search
           value={search}
-          placeholder="Search by Name"
+          placeholder={holder}
           style={{ width: '80%', alignSelf: 'center' }}
           onChange={searchHandler}
           onSubmit={fetchMentorsBySearch(search)}
@@ -60,9 +84,7 @@ const MentorList = props => {
         <Divider />
         <List
           itemLayout="vertical"
-          dataSource={props.mentors.filter(mentor =>
-            mentor.last_name.includes(search)
-          )}
+          dataSource={ds}
           renderItem={item => (
             <List.Item>
               <List.Item.Meta
