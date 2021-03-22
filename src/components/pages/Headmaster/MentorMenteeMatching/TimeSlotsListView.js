@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchTimeSlots } from '../../../../state/actions/index';
 
 const TimeSlotsListView = props => {
   return (
