@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchTimeSlots } from '../../../../state/actions/index';
 
 const TimeSlotsListView = props => {
+  const { fetchTimeSlots } = props;
+
+  useEffect(() => {
+    fetchTimeSlots();
+  }, [fetchTimeSlots]);
+
   return (
     <div className="container">
       <h3>Sunday</h3>
@@ -50,4 +56,11 @@ const TimeSlotsListView = props => {
   );
 };
 
-export default TimeSlotsListView;
+const mapStateToProps = state => {
+  return {
+    isloading: state.headmasterReducer.isLoading,
+    timeSlots: state.headmasterReducer.timeSlots,
+  };
+};
+
+export default connect(mapStateToProps, { fetchTimeSlots })(TimeSlotsListView);
