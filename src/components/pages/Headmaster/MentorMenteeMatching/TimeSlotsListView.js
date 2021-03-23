@@ -2,6 +2,13 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchTimeSlots } from '../../../../state/actions/index';
 import { Row, Col } from 'antd';
+import { Card } from 'antd';
+
+const gridStyle = {
+  width: '25%',
+  textAlign: 'space-around',
+  display: 'flex',
+};
 
 const TimeSlotsListView = props => {
   const { fetchTimeSlots } = props;
@@ -15,17 +22,14 @@ const TimeSlotsListView = props => {
       <h2>Time Slots</h2>
       <div>
         {props.timeSlots.map(timeSlot => (
-          <div>
-            <h3>{timeSlot.day}</h3>
-            <Row>
-              <Col xs={24} xl={8}>
-                {timeSlot.time}
-              </Col>
-              <Col xs={24} xl={8}>
-                {timeSlot.assigned}
-              </Col>
-            </Row>
-          </div>
+          <Card title={timeSlot.day}>
+            <Card.Grid hoverable={false} style={gridStyle}>
+              {timeSlot.time}
+            </Card.Grid>
+            <Card.Grid hoverable={false} style={gridStyle}>
+              {timeSlot.assigned}
+            </Card.Grid>
+          </Card>
         ))}
       </div>
     </div>
