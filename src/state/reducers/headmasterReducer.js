@@ -119,7 +119,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        mentees: action.payload,
+        timeSlots: action.payload,
       };
     case FETCH_TIMESLOTS_FAILURE:
       debugLog(action.type, action.payload);
