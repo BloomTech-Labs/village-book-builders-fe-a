@@ -3,11 +3,16 @@ import { connect } from 'react-redux';
 import { fetchTimeSlots } from '../../../../state/actions/index';
 import { Row, Col } from 'antd';
 import { Card } from 'antd';
+import styled from 'styled-components';
+
+const xlCardStyle = {
+  width: 400,
+  textAlign: 'center',
+};
 
 const gridStyle = {
-  width: '25%',
-  textAlign: 'space-around',
-  display: 'flex',
+  width: '30%',
+  textAlign: 'center',
 };
 
 const TimeSlotsListView = props => {
@@ -21,16 +26,28 @@ const TimeSlotsListView = props => {
     <div className="container">
       <h2>Time Slots</h2>
       <div>
-        {props.timeSlots.map(timeSlot => (
-          <Card title={timeSlot.day}>
-            <Card.Grid hoverable={false} style={gridStyle}>
-              {timeSlot.time}
-            </Card.Grid>
-            <Card.Grid hoverable={false} style={gridStyle}>
-              {timeSlot.assigned}
-            </Card.Grid>
-          </Card>
-        ))}
+        <Row gutter={25}>
+          {props.timeSlots.map(timeSlot => (
+            <Card style={xlCardStyle}>
+              March {timeSlot.day}
+              <Col className="gutter-row" span={25}>
+                <Card
+                  type="inner"
+                  title="Time"
+                  style={gridStyle}
+                  border={false}
+                >
+                  {timeSlot.time}
+                </Card>
+              </Col>
+              <Col className="gutter-row" span={25}>
+                <Card type="inner" title="booked" style={gridStyle}>
+                  {timeSlot.assigned}
+                </Card>
+              </Col>
+            </Card>
+          ))}
+        </Row>
       </div>
     </div>
   );
