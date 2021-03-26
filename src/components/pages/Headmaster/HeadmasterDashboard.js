@@ -83,7 +83,7 @@ const HeadmasterDashboard = props => {
               </NavLink>
             </Menu.Item>
             <Menu.Item key="9" icon={<UnorderedListOutlined />}>
-              <NavLink to="/timeslots-listview">Available Times</NavLink>
+              <NavLink to="/timeslots-listview">Time slots list</NavLink>
             </Menu.Item>
             <Menu.Item key="10" icon={<UnorderedListOutlined />}>
               <NavLink to="/avail">Mentor Availability</NavLink>
