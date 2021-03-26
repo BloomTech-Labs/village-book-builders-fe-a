@@ -9,9 +9,16 @@ import {
   StyledArrays,
   StyledButton,
 } from './StyledComponents';
+import { useHistory } from 'react-router-dom';
 
 const TimeSlotsListView = props => {
   const { fetchTimeSlots } = props;
+
+  const history = useHistory();
+
+  const schedule = e => {
+    history.push('/mentor-mentee-matching');
+  };
 
   useEffect(() => {
     fetchTimeSlots();
@@ -35,15 +42,15 @@ const TimeSlotsListView = props => {
             <StyledVerticalBox>
               <h4>Edit</h4>
               <StyledArrays>
-                <StyledButton>edit</StyledButton>
-                <StyledButton>edit</StyledButton>
-                <StyledButton>edit</StyledButton>
-                <StyledButton>edit</StyledButton>
-                <StyledButton>edit</StyledButton>
-                <StyledButton>edit</StyledButton>
-                <StyledButton>edit</StyledButton>
-                <StyledButton>edit</StyledButton>
-                <StyledButton>edit</StyledButton>
+                <StyledButton onClick={schedule}>edit</StyledButton>
+                <StyledButton onClick={schedule}>edit</StyledButton>
+                <StyledButton onClick={schedule}>edit</StyledButton>
+                <StyledButton onClick={schedule}>edit</StyledButton>
+                <StyledButton onClick={schedule}>edit</StyledButton>
+                <StyledButton onClick={schedule}>edit</StyledButton>
+                <StyledButton onClick={schedule}>edit</StyledButton>
+                <StyledButton onClick={schedule}>edit</StyledButton>
+                <StyledButton onClick={schedule}>edit</StyledButton>
               </StyledArrays>
             </StyledVerticalBox>
           </StyledDateCard>
