@@ -1,19 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchTimeSlots } from '../../../../state/actions/index';
-import { Row, Col } from 'antd';
-import { Card } from 'antd';
-import styled from 'styled-components';
-
-const xlCardStyle = {
-  width: 400,
-  textAlign: 'center',
-};
-
-const gridStyle = {
-  width: '30%',
-  textAlign: 'center',
-};
+import {
+  StyledComponent,
+  StyledDateCard,
+  StyledVerticalBox,
+  StyledHeader,
+  StyledArrays,
+  StyledButton,
+} from './StyledComponents';
 
 const TimeSlotsListView = props => {
   const { fetchTimeSlots } = props;
@@ -25,30 +20,35 @@ const TimeSlotsListView = props => {
   return (
     <div className="container">
       <h2>Time Slots</h2>
-      <div>
-        <Row gutter={25}>
-          {props.timeSlots.map(timeSlot => (
-            <Card style={xlCardStyle}>
-              March {timeSlot.day}
-              <Col className="gutter-row" span={25}>
-                <Card
-                  type="inner"
-                  title="Time"
-                  style={gridStyle}
-                  border={false}
-                >
-                  {timeSlot.time}
-                </Card>
-              </Col>
-              <Col className="gutter-row" span={25}>
-                <Card type="inner" title="booked" style={gridStyle}>
-                  {timeSlot.assigned}
-                </Card>
-              </Col>
-            </Card>
-          ))}
-        </Row>
-      </div>
+      <StyledComponent>
+        {props.timeSlots.map(timeSlot => (
+          <StyledDateCard>
+            <StyledHeader>{timeSlot.day}</StyledHeader>
+            <StyledVerticalBox>
+              <h4>Time</h4>
+              <StyledArrays>{timeSlot.time}</StyledArrays>
+            </StyledVerticalBox>
+            <StyledVerticalBox>
+              <h4>Booked</h4>
+              <StyledArrays> {timeSlot.assigned}</StyledArrays>
+            </StyledVerticalBox>
+            <StyledVerticalBox>
+              <h4>Edit</h4>
+              <StyledArrays>
+                <StyledButton>edit</StyledButton>
+                <StyledButton>edit</StyledButton>
+                <StyledButton>edit</StyledButton>
+                <StyledButton>edit</StyledButton>
+                <StyledButton>edit</StyledButton>
+                <StyledButton>edit</StyledButton>
+                <StyledButton>edit</StyledButton>
+                <StyledButton>edit</StyledButton>
+                <StyledButton>edit</StyledButton>
+              </StyledArrays>
+            </StyledVerticalBox>
+          </StyledDateCard>
+        ))}
+      </StyledComponent>
     </div>
   );
 };
