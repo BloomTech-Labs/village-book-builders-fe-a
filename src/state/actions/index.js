@@ -273,6 +273,7 @@ export const fetchMentors = () => dispatch => {
     );
 };
 
+
 export const fetchMentorsBySearch = search => dispatch => {
   dispatch({ type: actionTypes.FETCH_MENTOR_BY_LAST_NAME_START });
   axiosWithAuth()
@@ -292,23 +293,7 @@ export const fetchMentorsBySearch = search => dispatch => {
     );
 };
 
-export const fetchMentorSlots = () => dispatch => {
-  dispatch({ type: actionTypes.FETCH_MENTOR_SLOTS_START });
-  axiosWithAuth()
-    .get(`https://vbb-mock-api.herokuapp.com/slot`)
-    .then(res => {
-      dispatch({
-        type: actionTypes.FETCH_MENTOR_SLOTS_SUCCESS,
-        payload: res.data,
-      });
-    })
-    .catch(err =>
-      dispatch({
-        type: actionTypes.FETCH_MENTOR_SLOTS_FAILURE,
-        payload: err,
-      })
-    );
-};
+
 
 // ----------------
 // ADMIN
