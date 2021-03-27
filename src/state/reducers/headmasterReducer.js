@@ -97,15 +97,6 @@ const reducer = (state = initialState, action) => {
     case FETCH_CALENDAR_FAILURE:
       debugLog(action.type, action.payload);
       return { ...state, isLoading: false };
-    case FETCH_MENTOR_SLOTS_SUCCESS:
-      debugLog(action.type, action.payload);
-      return { ...state, isLoading: false, slot: action.payload };
-    case FETCH_MENTOR_SLOTS_START:
-      debugLog(action.type, action.payload);
-      return { ...state, isLoading: true };
-    case FETCH_MENTOR_SLOTS_FAILURE:
-      debugLog(action.type, action.payload);
-      return { ...state, isLoading: false };
   }
 };
 
