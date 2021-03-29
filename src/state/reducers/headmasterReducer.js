@@ -13,6 +13,14 @@ import {
   FETCH_CALENDAR_START,
   FETCH_CALENDAR_SUCCESS,
   FETCH_CALENDAR_FAILURE,
+
+  FETCH_MENTOR_SLOTS_START,
+  FETCH_MENTOR_SLOTS_SUCCESS,
+  FETCH_MENTOR_SLOTS_FAILURE,
+  FETCH_TIMESLOTS_START,
+  FETCH_TIMESLOTS_SUCCESS,
+  FETCH_TIMESLOTS_FAILURE,
+
 } from '../actions/actionTypes';
 
 import { debugLog } from '../../utils/debugMode.js'; //
@@ -33,6 +41,10 @@ const initialState = {
       date: null,
     },
   ],
+
+  slot: [],
+  timeSlots: [],
+
 };
 // Fetch school data for headmaster
 const reducer = (state = initialState, action) => {
@@ -93,6 +105,31 @@ const reducer = (state = initialState, action) => {
     case FETCH_CALENDAR_FAILURE:
       debugLog(action.type, action.payload);
       return { ...state, isLoading: false };
+
+    case FETCH_MENTOR_SLOTS_SUCCESS:
+      debugLog(action.type, action.payload);
+      return { ...state, isLoading: false, slot: action.payload };
+    case FETCH_MENTOR_SLOTS_START:
+      debugLog(action.type, action.payload);
+      return { ...state, isLoading: true };
+    case FETCH_MENTOR_SLOTS_FAILURE:
+      debugLog(action.type, action.payload);
+      return { ...state, isLoading: false };
+
+    case FETCH_TIMESLOTS_START:
+      debugLog(action.type, action.payload);
+      return { ...state, isLoading: true };
+    case FETCH_TIMESLOTS_SUCCESS:
+      debugLog(action.type, action.payload);
+      return {
+        ...state,
+        isLoading: false,
+        timeSlots: action.payload,
+      };
+    case FETCH_TIMESLOTS_FAILURE:
+      debugLog(action.type, action.payload);
+      return { ...state, isLoading: false };
+
   }
 };
 

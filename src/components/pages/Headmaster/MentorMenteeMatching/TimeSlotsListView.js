@@ -1,51 +1,70 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { fetchTimeSlots } from '../../../../state/actions/index';
+import {
+  StyledComponent,
+  StyledDateCard,
+  StyledVerticalBox,
+  StyledHeader,
+  StyledArrays,
+  StyledButton,
+} from './StyledComponents';
+import { useHistory } from 'react-router-dom';
 
 const TimeSlotsListView = props => {
+  const { fetchTimeSlots } = props;
+
+  const history = useHistory();
+
+  const schedule = e => {
+    history.push('/mentor-mentee-matching');
+  };
+
+  useEffect(() => {
+    fetchTimeSlots();
+  }, [fetchTimeSlots]);
+
   return (
     <div className="container">
-      <h3>Sunday</h3>
-      <ol>
-        <li>3:00 pm</li>
-        <li>4:00 pm</li>
-      </ol>
-
-      <h3>Monday</h3>
-      <ol>
-        <li>3:00 pm</li>
-        <li>4:00 pm</li>
-      </ol>
-
-      <h3>Tuesday</h3>
-      <ol>
-        <li>2:00 pm</li>
-        <li>3:00 pm</li>
-      </ol>
-
-      <h3>Wednesday</h3>
-      <ol>
-        <li>2:00 pm</li>
-        <li>3:00 pm</li>
-      </ol>
-
-      <h3>Thursday</h3>
-      <ol>
-        <li>3:00 pm</li>
-        <li>5:00 pm</li>
-      </ol>
-
-      <h3>Friday</h3>
-      <ol>
-        <li>3:00 pm</li>
-        <li>5:00 pm</li>
-      </ol>
-
-      <h3>Saturday</h3>
-      <ol>
-        <li>1:00 pm</li>
-        <li>2:00 pm</li>
-      </ol>
+      <h2>Time Slots</h2>
+      <StyledComponent>
+        {props.timeSlots.map(timeSlot => (
+          <StyledDateCard>
+            <StyledHeader>{timeSlot.day}</StyledHeader>
+            <StyledVerticalBox>
+              <h4>Time</h4>
+              <StyledArrays>{timeSlot.time}</StyledArrays>
+            </StyledVerticalBox>
+            <StyledVerticalBox>
+              <h4>Booked</h4>
+              <StyledArrays> {timeSlot.assigned}</StyledArrays>
+            </StyledVerticalBox>
+            <StyledVerticalBox>
+              <h4>Edit</h4>
+              <StyledArrays>
+                <StyledButton onClick={schedule}>edit</StyledButton>
+                <StyledButton onClick={schedule}>edit</StyledButton>
+                <StyledButton onClick={schedule}>edit</StyledButton>
+                <StyledButton onClick={schedule}>edit</StyledButton>
+                <StyledButton onClick={schedule}>edit</StyledButton>
+                <StyledButton onClick={schedule}>edit</StyledButton>
+                <StyledButton onClick={schedule}>edit</StyledButton>
+                <StyledButton onClick={schedule}>edit</StyledButton>
+                <StyledButton onClick={schedule}>edit</StyledButton>
+              </StyledArrays>
+            </StyledVerticalBox>
+          </StyledDateCard>
+        ))}
+      </StyledComponent>
     </div>
   );
 };
 
-export default TimeSlotsListView;
+const mapStateToProps = state => {
+  return {
+    isloading: state.headmasterReducer.isLoading,
+    timeSlots: state.headmasterReducer.timeSlots,
+  };
+};
+
+export default connect(mapStateToProps, { fetchTimeSlots })(TimeSlotsListView);
