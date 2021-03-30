@@ -13,12 +13,14 @@ import {
   FETCH_CALENDAR_START,
   FETCH_CALENDAR_SUCCESS,
   FETCH_CALENDAR_FAILURE,
+
   FETCH_MENTOR_SLOTS_START,
   FETCH_MENTOR_SLOTS_SUCCESS,
   FETCH_MENTOR_SLOTS_FAILURE,
   FETCH_TIMESLOTS_START,
   FETCH_TIMESLOTS_SUCCESS,
   FETCH_TIMESLOTS_FAILURE,
+
 } from '../actions/actionTypes';
 
 import { debugLog } from '../../utils/debugMode.js'; //
@@ -39,8 +41,10 @@ const initialState = {
       date: null,
     },
   ],
+
   slot: [],
   timeSlots: [],
+
 };
 // Fetch school data for headmaster
 const reducer = (state = initialState, action) => {
