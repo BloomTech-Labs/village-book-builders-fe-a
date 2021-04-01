@@ -1,47 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchMentors } from '../../../../state/actions/index';
-import { Divider, List, Avatar } from 'antd';
+import MentorSLot from './MentorSlotCard';
 
 const MentorSlotView = props => {
-  const { fetchMentors } = props;
-
   useEffect(() => {
-    fetchMentors();
-  }, [fetchMentors]);
-
-  console.log('props.mentors', props.mentors);
+    props.fetchMentors();
+  }, []);
 
   return (
     <div>
       <h1>Mentor Time Slots</h1>
       <div>
-        <Divider />
-        <List
-          itemLayout="vertical"
-          dataSource={props.mentors}
-          renderItem={item => (
-            <List.Item>
-              <List.Item.Meta
-                avatar={<Avatar src={item.mentor_picture} />}
-                title={item.first_name + ' ' + item.last_name}
-              />
-              <List.Item.Meta
-                title={<header>Time Zone:</header>}
-                description={item.availability.time_zone}
-              />
-              <List.Item.Meta
-                title={<header>Availability:</header>}
-                description={
-                  item.availability.as_early_as +
-                  ' - ' +
-                  item.availability.as_late_as
-                }
-              />
-            </List.Item>
-          )}
-        />
-        <Divider />
+        {props.mentors
+          .sort((a, b) =>
+            a.availability.as_early_as > b.availability.as_early_as ? 1 : -1
+          )
+          .map(item => (
+            <MentorSLot key={item.id} item={item} />
+          ))}
       </div>
     </div>
   );
