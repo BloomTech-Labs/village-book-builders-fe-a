@@ -2,9 +2,6 @@
 
 For steps on how to work with this repository [please see here](https://docs.labs.lambdaschool.com/labs-spa-starter/)
 
-# Village Book Builders
-
-You can find the deployed project at [VBB-Deployment](main.d364h8tamcqe39.amplifyapp.com).
 
 ## Contributors
 
@@ -13,9 +10,17 @@ You can find the deployed project at [VBB-Deployment](main.d364h8tamcqe39.amplif
 | [<img src="https://ca.slack-edge.com/ESZCHB482-W016ECL84RW-afefea5a0c53-512" width = "200" />](https://github.com/Jahteo) | [<img src="https://ca.slack-edge.com/ESZCHB482-W0123RU151V-ffba83afb622-512" width = "200" />](https://github.com/ferror18) | [<img src="https://ca.slack-edge.com/ESZCHB482-W0138D8CX0Q-a7076291a0cf-512" width = "200" />](https://github.com/yirano) | [<img src="https://ca.slack-edge.com/ESZCHB482-W012QNXUFMJ-92e87d69900d-512" width = "200" />](https://github.com/jidelson) | [<img src="https://ca.slack-edge.com/ESZCHB482-W0123RP3C9M-fff2ba750184-512" width = "200" />](https://github.com/kima-92) |
 |                                [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Jahteo)                                |                            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ferror18)                             |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/yirano)                           |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/jidelson)                           |                           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/kima-92)                            |
 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/josh-glantzhucks/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |
+|                                                      [Tevin Davis](https://github.com/tdavis1991)                                                       |                                                       [Altyn Berdiyeva](https://github.com/berdiyeva)                                                        |                                                      [Chris Forrest](https://github.com/Chris-Forrest)                                                       |                                                       [Jeremy Willoughby](https://github.com/jtwillo51)                                                        |                                                      [Paul Lee](https://github.com/PL9627)                                                       |
+| [<img src="https://avatars.githubusercontent.com/u/46766123?v=4" width = "200" />](https://github.com/tdavis1991) | [<img src="https://avatars.githubusercontent.com/u/28709646?v=4" width = "200" />](https://github.com/berdiyeva) | [<img src="https://avatars.githubusercontent.com/u/42876707?v=4" width = "200" />](https://github.com/Chris-Forrest) | [<img src="https://avatars.githubusercontent.com/u/58451213?v=4" width = "200" />](https://github.com/jtwillo51) | [<img src="https://avatars.githubusercontent.com/u/45700717?v=4" width = "200" />](https://github.com/PL9627) |
+|                                [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/tdavis1991)                                |                            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/berdiyeva)                             |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Chris-Forrest)                           |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/jtwillo51)                           |                           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/PL9627)                            |
+|                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/tevin-davis/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/altyn-berdiyeva-899794143/)                 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/chrisforrest737/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jeremy-willoughby/)                 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/plee-wj21/)                |
 
 <br>
 <br>
+
+![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
+![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
+![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
@@ -33,13 +38,11 @@ You can find the deployed project at [VBB-Deployment](main.d364h8tamcqe39.amplif
 - Is a mobile-first design.
 - Private routes protect all resources that are not authenticated.
 - Headmaster dashboard and Admin dashboard
-- Headmaster profile and edit.
+- Headmaster profile, edit, view mentor availability and view all timeslots for a week.
 - Admin library view, edit, and delete.
 - Headmaster mentee Create, Read, Edit, and Delete.
 
-#### Front end deployed to `AWS-Amplify`
-
-#### [Back end](https://github.com/ferror18/vbb-backend) built using:
+#### [Back end](https://vbb-b-api.herokuapp.com) built using:
 
 #### Node.js
 
@@ -52,14 +55,21 @@ You can find the deployed project at [VBB-Deployment](main.d364h8tamcqe39.amplif
 - Mock back-end with realistic data generated by Faker.js.
 - Mock back-end with basic JWT authentication.
 
-# APIs (needs updating)
+# APIs 
 
-- BASEURL/login
-- BASEURL/library
-- BASEURL/village
-- BASEURL/school
-- BASEURL/mentee
-- BASEURL/headmaster
+students|mentees -> https://vbb-b-api.herokuapp.com/mentees
+
+teachers -> https://vbb-b-api.herokuapp.com/teachers
+
+mentors -> https://vbb-b-api.herokuapp.com/mentors
+
+headmasters -> https://vbb-b-api.herokuapp.com/headmasters
+
+programs -> https://vbb-b-api.herokuapp.com/programs
+
+resources -> https://vbb-b-api.herokuapp.com/resources
+
+sessions (used to be called matches) -> https://vbb-b-api.herokuapp.com/sessions
 
 # Installation Instructions
 
@@ -105,5 +115,5 @@ Remember that this project is licensed under the MIT license, and by submitting 
 
 ## Documentation
 
-See [Backend Documentation](https://github.com/ferror18/vbb-backend) for details on the backend of our project.
+See [Backend Documentation](https://github.com/Lambda-School-Labs/village-book-builders-be-a) for details on the backend of our project.
 More personal team notes, incl updated roadmaps: https://www.notion.so/Labs-1-b3ff11cad50d4576a3e7bcf2d7269652
