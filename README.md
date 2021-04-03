@@ -41,6 +41,8 @@ For steps on how to work with this repository [please see here](https://docs.lab
 - Headmaster profile, edit, view mentor availability and view all timeslots for a week.
 - Admin library view, edit, and delete.
 - Headmaster mentee Create, Read, Edit, and Delete.
+- Headmaster may filter mentees/mentors by various categories
+- Headmaster will see any mentee not assigned a mentor marked with a 'red flag'
 
 #### [Back end](https://vbb-b-api.herokuapp.com) built using:
 
